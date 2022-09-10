@@ -17,7 +17,6 @@ import CheckIcon from "@mui/icons-material/Check";
 const TopSubsPanel = () => {
   const { subs, user } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const classes = useSubPanelStyles();
   const theme = useTheme();
   const isNotDesktop = useMediaQuery(theme.breakpoints.down('lg'));
 
@@ -54,17 +53,17 @@ const TopSubsPanel = () => {
   };
 
   return (
-    <Paper variant="outlined" className={classes.mainPaper}>
-      <Paper variant="outlined" className={classes.listPaper}>
-        <Typography variant="h5" color="secondary" className={classes.title}>
+    <Paper variant="outlined">
+      <Paper variant="outlined">
+        <Typography variant="h5" color="secondary">
           Top Subreddishes
         </Typography>
         {loadingSubs ? (
           <LoadingSpinner text="Fetching subs data..." />
         ) : (
           subs.topSubs.map((s, i) => (
-            <div key={s.id} className={classes.listWrapper}>
-              <Typography variant="body2" className={classes.listItem}>
+            <div key={s.id}>
+              <Typography variant="body2">
                 {`${i + 1}. `}
                 <Link href={`/r/${s.subredditName}`} color="primary">
                   <a>{s.subredditName}</a>
